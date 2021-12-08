@@ -65,14 +65,16 @@ class HomePage extends StatelessWidget {
                 if (index == 0)
                   const Padding(
                     padding: EdgeInsets.all(16.0),
-                    child: Text("Recents", style: TextStyle(fontSize: 25)),
+                    child: Text("Recents",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                 if (index == 2)
                   const Padding(
                     padding: EdgeInsets.all(16.0),
                     child: Text("Contacts",
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold)),
+                            fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                 InkWell(
                   onTap: () {
