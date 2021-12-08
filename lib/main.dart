@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:contactapp/contact_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List myContacts = listOfContacts;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -43,7 +46,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: myContacts.length,
           itemBuilder: (BuildContext context, index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,18 +76,22 @@ class HomePage extends StatelessWidget {
                   ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => ContactPage()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ContactPage(
+                                  myContact: myContacts[index],
+                                )));
                   },
-                  child: const ListTile(
+                  child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage("images/lady.jpg"),
+                      backgroundImage: NetworkImage(myContacts[index]["image"]),
                     ),
                     title: Text(
-                      "Techries Ghana",
+                      myContacts[index]["name"],
                       style: TextStyle(fontWeight: FontWeight.w800),
                     ),
-                    subtitle: Text("+233 505 419 44"),
+                    subtitle: Text(myContacts[index]["phone"]),
                     trailing: Icon(Icons.more_horiz),
                   ),
                 ),
@@ -106,3 +113,94 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+List listOfContacts = [
+  {
+    "name": "Olivia",
+    "location": "Location",
+    "email": "email1@email.com",
+    "phone": "+233 505 419 449",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=10",
+  },
+  {
+    "name": "Ugo",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 505 419 444",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=40",
+  },
+  {
+    "name": "Kelvin",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 505 000 484",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=50",
+  },
+  {
+    "name": "Uche",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 505 419 455",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=60",
+  },
+  {
+    "name": "Oluwafemi",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 245 419 4401",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=70",
+  },
+  {
+    "name": "Oluwaseyi",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 505 009 555",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=80",
+  },
+  {
+    "name": "Desmond",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 205 419 44",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=90",
+  },
+  {
+    "name": "Aseidu",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "050541944",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=101",
+  },
+  {
+    "name": "Hagun",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 595 419 503",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=205",
+  },
+  {
+    "name": "Derrick",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 555 419 404",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=309",
+  },
+  {
+    "name": "Jackie Appiah",
+    "location": "Location",
+    "email": "yourem@email.com",
+    "phone": "+233 235 419 300",
+    "Group": "Family",
+    "image": "https://picsum.photos/200/300?random=500",
+  },
+];
